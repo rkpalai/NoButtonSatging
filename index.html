@@ -1,14 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xola Checkout</title>
-    <script type="text/javascript"> (function() { var co=document.createElement("script"); co.type="text/javascript"; co.async=true; co.src="https://staging.xola.com/checkout.js"; var s=document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(co, s); })(); </script>
+    <script type="text/javascript"> (function() { var co=document.createElement("script");
+        co.type="text/javascript"; co.async=true; co.src="https://staging.xola.com/checkout.js";  
+        var s=document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(co, s); })(); </script>
 </head>
 <body>
-    <div class="container">
-      
+<div>
+
+<div class="xola-checkout" data-seller="597775ba6864eac8038b4644" data-version="2"> put any seller on ID here (try with seller on only v1, 30% x2, 50% x2 and 100% x2)
+        <button type="button"></button></div>Open (sprecher) only x2
+<!--  <a class="button" href="https://checkout.xola.app/#seller/65cf6b40ba34a4bc1b0c588d/packages/66bf8105b3a8adb9450660e1?openExternal=true"> Book now </a>-->
+    <div>
+        <button id="sprecher-exp-btn" type="button">open sprecher exp</button>
+        <button id="h-m-exp-btn" type="button">open hm exp</button>
     </div>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            var btn = document.getElementById("sprecher-exp-btn");
+            btn.addEventListener("click", function() {
+                if (window.xola && typeof window.xola.checkout === "function") {
+                    window.xola.checkout(
+                        {
+                            seller: "597775ba6864eac8038b4644",  // put any seller here. the checkout should open for this button/experience based on checkout link returned for the above button
+                            experience: "5978dd5ecf8b9c0e4d8b4614", // try with different experiences, buttons
+                            type: "experience",
+                            version: 2
+                        },
+                        {
+                            arrival: "2025-12-27",  // try different arrival dates/times and also `quantity`
+                            arrivalTime: "1400"
+                        }
+                    );
+                }
+            });
+
+            var btn1 = document.getElementById("h-m-exp-btn");
+            btn1.addEventListener("click", function() {
+                if (window.xola && typeof window.xola.checkout === "function") {
+                    window.xola.checkout(
+                        {
+                            seller: "53e93b35ad2171ef768b4588",  // try different seller experiences here
+                            experience: "59867796e017985b048b4635",
+                            type: "experience",
+                            version: 2
+                        },
+                        {
+                            arrival: "2025-12-06",
+                            arrivalTime: "1900"
+                        }
+                    );
+                }
+            });
+        });
+    </script>
+</div>
+
 </body>
 </html>
